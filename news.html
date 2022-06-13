@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed News</title>
+  </head>
+  <body>
+    <div>
+      <!-- - The nav-bar will have link for home page(Id:- "home") and link for world news(Id:- "world_news). -->
+    </div>
+    <div>
+      <div>
+        <!-- Sidebar will have
+         - Image of user (Id:- "user_img")
+  - Name of user (Id:- "user_name")
+  - Email of user (Id:- "user_email")
+  - Country of user (Id:- "user_country) -->
+      </div>
+      <div id="detailed_news">
+
+        <!-- - The detailed news will be appended inside div with Id as "detailed_news", which will have following:-
+      * Image tag for image
+      * H3 tag for title
+      * H4 tag for description -->
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./scripts/news.js" type="module"></script>
+<script>
+  let data = JSON.parse(localStorage.getItem("newsData"))
+  let container = document.querySelector("#detailed_news")
+  function append(data,container){
+    console.log(data)
+    container.innerHTML = null
+    
+    let div = document.createElement('div')
+      div.setAttribute('id','news')
+      let image = document.createElement('img')
+      image.src = urlToImage
+      let h3 = document.createElement('h3')
+      h3.innerHTML = title
+      let desc = document.createElement('p')
+      desc.innerHTML = description
+      newsData.push(title,description,urlToImage)
+      div.addEventListener('click',function(){
+        localStorage.setItem('newsData',JSON.stringify(newsData))
+        window.location.href = "news.html"
+      })
+      div.append(image,h3,desc)
+      container.append(div)
+  
+  }
+  append(data,container)
+</script>
